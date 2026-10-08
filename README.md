@@ -6,7 +6,7 @@
 
 ##  Introduction
 
-This project analyzes a dataset of **1,200 teenagers (ages 13–19)** to explore the relationship between social media behavior and mental health outcomes — including stress, anxiety, sleep, addiction, academic performance, and depression indicators.
+This project analyzes a dataset of **1,200 teenagers (ages 13–19)** to explore the relationship between social media behavior and mental health outcomes - including stress, anxiety, sleep, addiction, academic performance, and depression indicators.
 
 The goal was to turn a raw survey-style dataset into a two-page, decision-ready Power BI report that a parent, school counselor, or youth-wellness program could actually use - not just a collection of charts, but a report built around specific questions worth answering.
 
