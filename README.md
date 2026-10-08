@@ -1,12 +1,8 @@
-# Teen Mental Health & Social Media Analytics
+# Teen Mental Health and Social Media Analytics
 
 ![Cover](/cover_banner.jpg)
 
-## Digital Wellbeing & Behaviour Overview
 
-![Dashboard 1 - Digital Wellbeing & Behaviour Overview](/dashboard1_wellbeing_overview.png)
-
----
 
 ##  Introduction
 
@@ -48,9 +44,9 @@ The report was designed to answer:
 
 The dataset arrived largely clean (no nulls, no duplicate rows), but a few steps were still needed in Power Query before modeling:
 
-- **Enforced data types** — whole numbers for age/levels, decimals for hours
-- **Standardized text casing** — `gender` and `social_interaction_level` were lowercase while `platform_usage` was Title Case; all three were normalized with `Text.Proper`
-- **Flagged the class imbalance** — only 31 of 1,200 teens (2.6%) are flagged `depression_label = 1`; this is carried through the report as a visible caveat rather than cleaned away, since it's a real feature of the data, not an error
+- **Enforced data types** - whole numbers for age/levels, decimals for hours
+- **Standardized text casing** - `gender` and `social_interaction_level` were lowercase while `platform_usage` was Title Case; all three were normalized with `Text.Proper`
+- **Flagged the class imbalance** - only 31 of 1,200 teens (2.6%) are flagged `depression_label = 1`; this is carried through the report as a visible caveat rather than cleaned away, since it's a real feature of the data, not an error
 
 ---
 
@@ -99,7 +95,7 @@ DIVIDE(
 
 ---
 
-## 🎨 HTML-Rendered KPI Cards
+##  HTML-Rendered KPI Cards
 
 All KPI cards use the **HTML Content** custom visual so each tile can carry its own icon, color, and typography instead of Power BI's default card style. Each measure returns a complete HTML string, e.g.:
 
@@ -135,6 +131,11 @@ The platform filter (Instagram / TikTok / Both) uses the **Chiclet Slicer** cust
 
 ---
 
+## Digital Wellbeing & Behaviour Overview
+
+![Dashboard 1 - Digital Wellbeing & Behaviour Overview](/dashboard1_wellbeing_overview.png)
+
+---
 ##  Mental Health Risk & Correlation
 
 ![Dashboard 2 - Mental Health Risk & Correlation](/dashboard2_risk_correlation.png)
@@ -154,14 +155,14 @@ The platform filter (Instagram / TikTok / Both) uses the **Chiclet Slicer** cust
 ##  Recommendations
 
 1. **Prioritize sleep hygiene interventions** over blanket screen-time bans - sleep duration showed a clearer relationship with depression indicators than raw social media hours did.
-2. **Target the Moderate Risk segment**, not just High Risk — it's the largest group and the one most likely to shift with early intervention.
+2. **Target the Moderate Risk segment**, not just High Risk - it's the largest group and the one most likely to shift with early intervention.
 3. **Treat screen time before bed as a specific checkpoint**, separate from total daily usage - the data suggests timing matters, not just volume.
-4. **Use the Depression Rate figures cautiously** in any report-out — the sample of flagged cases is small, and messaging should reflect that rather than presenting it as a firm population estimate.
+4. **Use the Depression Rate figures cautiously** in any report-out - the sample of flagged cases is small, and messaging should reflect that rather than presenting it as a firm population estimate.
 5. **Expand the dataset** in future iterations to include more depression-flagged cases, which would allow firmer conclusions and potentially predictive modeling.
 
 ---
 
-## ⚠️ Limitations
+##  Limitations
 
 - Severe class imbalance in `depression_label` (2.6% positive cases) limits statistical confidence in any depression-specific finding.
 - `academic_performance` and `physical_activity` are provided as coded numeric scales (2–4 and 0–2) rather than raw units — exact scale definitions were not provided with the dataset.
@@ -169,3 +170,5 @@ The platform filter (Instagram / TikTok / Both) uses the **Chiclet Slicer** cust
 
 ---
 
+## Here is the Link to assess the full project on PowerBI Service
+https://app.powerbi.com/view?r=eyJrIjoiNjkwOGU2OTYtYTdhMi00YTBkLTg5MGEtYmJkZDRlNWEyMzU5IiwidCI6IjQ4NTkyZTczLTE2OTUtNGVmMy1hYzg3LWM0ZDNjMGVhNDYzMyJ9
