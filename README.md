@@ -110,18 +110,6 @@ KPI Card - Avg Sleep =
 
 Design system: white card background, `#5D7DA3` text, soft drop shadow, pastel icon badge per card, 34px bold value / 14px bold label for readability at a glance.
 
-**Dynamic page titles** were built the same way, reflecting whatever Age Group / Gender / Platform filters are currently applied:
-```DAX
-Dynamic Title - Wellbeing = 
-VAR SelAge = IF(ISFILTERED('Teen_Mental_Health'[age_group]), SELECTEDVALUE('Teen_Mental_Health'[age_group], "All Ages"), "All Ages")
-VAR SelGender = IF(ISFILTERED('Teen_Mental_Health'[gender]), SELECTEDVALUE('Teen_Mental_Health'[gender], "All Genders"), "All Genders")
-VAR SelPlatform = IF(ISFILTERED('Teen_Mental_Health'[platform_usage]), SELECTEDVALUE('Teen_Mental_Health'[platform_usage], "All Platforms"), "All Platforms")
-RETURN
-"<div style='background:#FFFFFF;padding:14px 20px;font-family:Segoe UI,sans-serif;'>" &
-  "<div style='font-size:30px;font-weight:800;color:#5D7DA3;'>Digital Wellbeing &amp; Behavior Overview</div>" &
-  "<div style='font-size:15px;font-weight:600;color:#5D7DA3;opacity:0.75;margin-top:4px;'>" & SelAge & " | " & SelGender & " | " & SelPlatform & " · " & FORMAT([Total Teens],"#,0") & " teens shown</div>" &
-"</div>"
-```
 
 ---
 
@@ -135,11 +123,50 @@ The platform filter (Instagram / TikTok / Both) uses the **Chiclet Slicer** cust
 
 ![Dashboard 1 - Digital Wellbeing & Behaviour Overview](/dashboard1_wellbeing_overview.png)
 
+###  Page Explanation
+
+This page answers: **how are teens actually using social media, and how is that usage tied to sleep and addiction behavior?** It's the "behavior" half of the story - before we get into mental health outcomes on Page 2.
+
+**KPI cards (top row)**
+- **Total Teens** - sample size for whatever filter is currently applied (Age Group / Gender), so every other number on the page can be read in context.
+- **Screen Time Before Sleep** - average hours of screen use right before bed; a leading indicator for sleep disruption.
+- **Avg Sleep Hours** - baseline sleep duration across the filtered group.
+- **Sleep Deficit (<6h)** - the % of teens sleeping under the recommended minimum; the single clearest early-warning number on this page.
+
+**Charts**
+- **Avg Addiction Level by platform_usage** (donut) - compares TikTok, Instagram, and teens using both, showing that addiction scores are fairly close across platforms rather than one platform standing out as uniquely worse.
+- **Avg Addiction Level by Academic Band** - checks whether higher addiction scores track with lower academic performance; bars close in height mean the relationship is weaker than you might expect.
+- **Avg Addiction Level by Activity Level** - tests whether more physically active teens show lower addiction scores; the "Low" activity group having the highest bar is the notable read here.
+- **Sleep Category by Addiction Level** (matrix) - the replacement for the original scatter chart; shows avg addiction level across sleep categories and time-before-bed bands in one scannable grid instead of 1,200 overlapping dots.
+
+**What to take from this page:** usage patterns alone (which platform, how much time) don't swing addiction or academic scores dramatically - sleep deficit is the stat that stands out as actionable.
+
+---
+
 ---
 ##  Mental Health Risk & Correlation
 
 ![Dashboard 2 - Mental Health Risk & Correlation](/dashboard2_risk_correlation.png)
 
+###  Page Explanation
+
+This page answers: **of the teens in this dataset, how many are actually at risk, and what does that risk look like broken down by age and academic standing?** It's the outcome half of the story, building directly on the behavior patterns from Page 1.
+
+**KPI cards (top row)**
+- **Depression Rate** - % of teens flagged `depression_label = 1`. Shown deliberately small and paired with a caveat elsewhere on the page, since it's based on only 31 cases out of 1,200.
+- **High Risk Teens** - % of teens with both stress and anxiety scores ≥7; the group most worth prioritizing for support.
+- **Moderate Risk** - % sitting in the "watch zone" (either stress or anxiety ≥4); by far the largest segment, which is why the recommendations section calls this group out specifically.
+- **Avg Academic Performance** - baseline academic score for the filtered group, giving context for the addiction-vs-academic chart below it.
+
+**Charts**
+- **Risk Segment by Age Group** (stacked bar) - shows whether High/Moderate/Low risk is evenly spread across Early, Mid, and Late teens, or concentrated in one age band.
+- **Risk Distribution by Social Media Usage** (clustered bar, replacing the original scatter) — breaks down risk segment counts across Light/Moderate/Heavy social media usage tiers, answering "does heavier usage mean more high-risk teens" without the overplotting problem a 1,200-point scatter would have had.
+- **Avg Addiction Level by Academic Band** - mirrors the chart on Page 1 but filtered to this page's context, reinforcing whether academic standing and addiction move together.
+- **Depression Flagged Cases** (table) - the actual row-level list of the 31 flagged teens, with age, platform, and risk segment, so a viewer can inspect the small sample directly rather than just trusting the top-line %.
+
+**What to take from this page:** risk is not evenly distributed - it clusters in identifiable segments (by age band and usage tier), which is what makes the Moderate Risk group actionable rather than just a number.
+
+---
 ---
 
 ##  Key Insights
