@@ -192,7 +192,7 @@ This page answers: **of the teens in this dataset, how many are actually at risk
 ##  Limitations
 
 - Severe class imbalance in `depression_label` (2.6% positive cases) limits statistical confidence in any depression-specific finding.
-- `academic_performance` and `physical_activity` are provided as coded numeric scales (2–4 and 0–2) rather than raw units — exact scale definitions were not provided with the dataset.
+- `academic_performance` and `physical_activity` are provided as coded numeric scales (2–4 and 0–2) rather than raw units - exact scale definitions were not provided with the dataset.
 - Dataset is cross-sectional (a single snapshot), so all relationships described are correlational, not causal.
 
 ---
